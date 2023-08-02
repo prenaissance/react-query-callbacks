@@ -1,5 +1,9 @@
 micro library to return @tanstack/react-query callbacks
 
+[![codecov](https://codecov.io/gh/prenaissance/react-query-callbacks/branch/master/graph/badge.svg)](https://codecov.io/gh/prenaissance/react-query-callbacks)
+![CI workflow](https://github.com/prenaissance/react-query-callbacks/actions/workflows/ci.yml/badge.svg)
+![npm](https://img.shields.io/npm/v/react-query-callbacks?color=green&label=npm)
+
 ## Available callbacks
 
 - `onSettled(data, error)` - called when the query status changes to `success` or `error`

@@ -61,6 +61,31 @@ describe("useQueryCallbacks", () => {
     });
   });
 
+  it("should trigger on settling and on success when both are present", () => {
+    const counter = getCounter();
+    const Component = () => {
+      const query = useQuery({
+        queryKey: ["test"],
+        queryFn: () => counter,
+      });
+      useQueryCallbacks({
+        query,
+        onSettled: console.log,
+        onSuccess: console.log,
+      });
+
+      return null;
+    };
+
+    render(<Component />);
+
+    waitFor(() => {
+      expect(consoleMock).toHaveBeenCalledTimes(2);
+      expect(consoleMock).toHaveBeenCalledWith(0);
+      expect(consoleMock).toHaveBeenCalledWith(1);
+    });
+  });
+
   it("should trigger once on error", async () => {
     const counter = getFaultyCounter();
     const Component = () => {
